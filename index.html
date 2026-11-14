@@ -5,9 +5,12 @@
 <title>Площадки для доната · yasych</title>
 <style>
 *{box-sizing:border-box}body{margin:0;min-height:100svh;background:#ffe5a0 url('paper.jpg') center/cover fixed;color:#433128;font-family:'Segoe UI',system-ui,sans-serif;display:grid;place-items:center;padding:28px 18px}
-@property --rim-angle{syntax:'<angle>';initial-value:20deg;inherits:false}
-main{width:min(100%,470px);padding:25px 26px 23px;border:3px solid transparent;border-radius:32px;background:linear-gradient(#fffaf0,#fffaf0) padding-box,conic-gradient(from var(--rim-angle,20deg),#b57a2b,#efbe59 19%,#ffe9ad 35%,#dea076 51%,#d895a0 64%,#f5d28b 82%,#b57a2b) border-box;box-shadow:0 0 0 1px #9c652459,0 16px 60px #7a430929;text-align:center;animation:warm-rim 14s linear infinite}
-@keyframes warm-rim{to{--rim-angle:380deg}}
+@property --rim-angle{syntax:'<angle>';initial-value:20deg;inherits:true}
+@property --spark-angle{syntax:'<angle>';initial-value:0deg;inherits:true}
+main{position:relative;width:min(100%,470px);padding:25px 26px 23px;border:4px solid transparent;border-radius:32px;background:linear-gradient(#fffaf0,#fffaf0) padding-box,conic-gradient(from var(--rim-angle,20deg),#ff6aab,#ffb879 18%,#b8eeaf 35%,#70d5ee 51%,#9c8df3 70%,#e68bd3 86%,#ff6aab) border-box;box-shadow:0 0 0 1px #a4598d55,0 0 26px #d388ed50,0 18px 60px #7a43092b;text-align:center;animation:candy-rim 12s linear infinite,candy-spark 5.5s linear infinite}
+main::after{content:"";position:absolute;inset:-4px;padding:4px;border-radius:inherit;pointer-events:none;background:conic-gradient(from var(--spark-angle,0deg),transparent 0deg 295deg,#fff2 318deg,#fff8 334deg,#fffdf3 344deg,transparent 351deg 360deg);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
+@keyframes candy-rim{to{--rim-angle:380deg}}
+@keyframes candy-spark{to{--spark-angle:360deg}}
 @media(prefers-reduced-motion:reduce){main{animation:none}}
 .portrait{height:104px;margin:0 auto 9px}.portrait img,.portrait canvas{height:100%;width:auto;display:block;margin:auto}.name{font-size:12px;font-weight:750;letter-spacing:.2em;color:#94745e;margin:0 0 9px}h1{font-size:31px;letter-spacing:-.8px;margin:0 0 17px;line-height:1.16}.intro{margin:0 0 23px;color:#796555;font-size:14px;line-height:1.6;text-wrap:pretty}.intro strong{color:#534033;font-weight:650}
 .links{display:grid;gap:11px}.donate{display:flex;align-items:center;gap:13px;min-height:81px;border:1px solid #ead6bb;border-radius:19px;padding:15px;text-decoration:none;color:inherit;text-align:left;background:#fffdf7;transition:transform .15s,box-shadow .15s}.donate:hover{transform:translateY(-2px);box-shadow:0 6px 16px #7a430913}a:focus-visible{outline:3px solid #4e8a82;outline-offset:4px}.badge{height:42px;width:42px;display:grid;place-items:center;flex:none;border-radius:13px;font-weight:850;font-size:22px}.da{background:#ffe4bf;color:#9b4e16}.do{background:#dfefff;color:#2665a0}.copy{flex:1}.copy strong{font-size:18px;display:block}.copy small{font-size:12px;color:#796452;display:block;margin-top:5px;line-height:1.4}.arrow{font-size:23px;color:#826656}
@@ -20,7 +23,7 @@ main{width:min(100%,470px);padding:25px 26px 23px;border:3px solid transparent;b
 <a class="donate" href="https://www.donationalerts.com/r/yassychh"><span class="badge da" aria-hidden="true">D</span><span class="copy"><strong>DonationAlerts</strong><small>Музыка — $5 · Фильм — $10</small></span><span class="arrow" aria-hidden="true">↗</span></a>
 <a class="donate" href="https://donatello.to/yasych"><span class="badge do" aria-hidden="true">D</span><span class="copy"><strong>Donatello</strong><small>Музыка — 50 грн · Фильм — 100 грн</small></span><span class="arrow" aria-hidden="true">↗</span></a></nav>
 <p class="currency">Рубли не принимаю.</p><p class="thanks">Спасибо за поддержку &lt;3</p>
-<nav class="socials" aria-label="Социальные сети"><a href="https://linktr.ee/yasych" rel="noreferrer" referrerpolicy="no-referrer">Linktree · ссылочки ↗</a></nav>
+<nav class="socials" aria-label="Социальные сети"><a href="https://linktr.ee/yasych" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Linktree · ссылочки ↗</a></nav>
 </main><script>const portrait=document.querySelector('.portrait');const icon=portrait.querySelector('img');
   function removeIconBackground() {
     const canvas = document.createElement('canvas');
